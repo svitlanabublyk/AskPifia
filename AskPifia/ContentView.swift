@@ -8,11 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var settings = false
+    
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            
+            VStack {
+                Text("Ask and shake me!")
+                    .padding(.horizontal)
+                HStack {
+                    Image(systemName: "arrow.clockwise")
+                        .onTapGesture {
+                        // update text onscreen
+                    }
+                    .padding()
+                }
+            }
+            .navigationBarItems(trailing: Button(action: {
+                self.settings = true
+            }) {
+                Image(systemName: "gearshape")
+                    .foregroundColor(.gray)
+            }
+            )
+        }
     }
 }
+
+
+
+
+
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var settings = false
+    @State private var showSettings = false
     @State private var answerText = "Ask and shake me!"
+    @ObservedObject var defaultAnswers = PossibleAnswers()
     
     var body: some View {
         NavigationView {
@@ -18,26 +19,34 @@ struct ContentView: View {
             VStack {
                 Text(answerText)
                     .onShake {
-                        Api().getAnswer { answer in
-                            answerText = answer.magic.answer
-                        }
+                        updateAnsweredText(completion:{ answer in
+                            answerText = answer
+                        },defaultAnswers: defaultAnswers)
                     }
                     .padding(.horizontal)
                 HStack {
                     Image(systemName: "arrow.clockwise")
                         .onTapGesture {
-                            // update text onscreen
+                            answerText = "Ask and shake me!"
                         }
                         .padding()
                 }
             }
             .navigationBarItems(trailing: Button(action: {
-                self.settings = true
+                self.showSettings = true
             }) {
                 Image(systemName: "gearshape")
                     .foregroundColor(.gray)
             }
             )
+            .sheet(isPresented: $showSettings) {
+                SettingsView(
+                    possibleAnswer1: defaultAnswers.items[0].answerValue,
+                    possibleAnswer2: defaultAnswers.items[1].answerValue,
+                    possibleAnswer3: defaultAnswers.items[2].answerValue,
+                    defaultAnswers: defaultAnswers
+                )
+            }
         }
     }
 }

@@ -22,13 +22,19 @@ struct Request: Decodable {
 }
 
 
-class Api{
-    func getAnswer (completion: @escaping (Answer) ->()) {
+class Api {
+    func getAnswer(completion: @escaping (String) ->(), defaultAnswers: Array<String>) {
         let apiAnswer = "https://8ball.delegator.com/magic/JSON/question_string"
         guard let url = URL(string: apiAnswer)
         else {return}
-        URLSession.shared.dataTask(with: url) { (data, _, _)  in
-            let answer = try! JSONDecoder().decode(Answer.self, from: data!)
+        URLSession.shared.dataTask(with: url) { (rawData, _, _)  in
+            let answer: String
+            if let data = rawData {
+                answer = try! JSONDecoder().decode(Answer.self, from: data).magic.answer
+                
+            } else {
+                answer = defaultAnswers.randomElement() ?? "Ooops, something went wrong!"
+            }
             DispatchQueue.main.async {
                 completion(answer)
             }
@@ -36,7 +42,6 @@ class Api{
         .resume()
     }
 }
-
 
 
 

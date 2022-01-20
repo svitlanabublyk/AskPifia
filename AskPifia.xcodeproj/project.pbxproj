@@ -25,6 +25,7 @@
 		7D13F357278CA56700FE5A27 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7D13F359278CA5A900FE5A27 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		7D13F35B2791E10200FE5A27 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7D1BF8E42799C17300F4E1D6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +42,7 @@
 		7D13F33D278CA3BB00FE5A27 = {
 			isa = PBXGroup;
 			children = (
+				7D1BF8E42799C17300F4E1D6 /* README.md */,
 				7D13F348278CA3BB00FE5A27 /* AskPifia */,
 				7D13F347278CA3BB00FE5A27 /* Products */,
 			);

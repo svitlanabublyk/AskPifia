@@ -34,7 +34,7 @@ struct SettingsView: View {
                 }
                 
             }
-            .navigationTitle("Choose your answer")
+            .navigationTitle("Default answers")
             .navigationBarItems(trailing: Button("Save"){
                 
                 self.defaultAnswers.items[0].answerValue = possibleAnswer1

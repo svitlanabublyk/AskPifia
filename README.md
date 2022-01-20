@@ -9,5 +9,8 @@
 
 ## User interface
 
-![Main Screen](docs/MainScreen1.png "Main Screen") ![Main Screen2](docs/MainScreen2.png "Main Screen with answer") ![Setting Screen](docs/SettingScreen.png "Setting Screen")
+
+Main Screen | Main Screen with answer | Setting Screen
+:-----------:|:----------------------:|:-------------:
+![Main Screen](docs/MainScreen1.png "Main Screen") | ![Main Screen2](docs/MainScreen2.png "Main Screen with answer") | ![Setting Screen](docs/SettingScreen.png "Setting Screen")
 

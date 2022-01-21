@@ -9,23 +9,23 @@ import SwiftUI
 
 /// Main view
 struct ContentView: View {
-    
+
    /// Button shows settings screen
     @State private var showSettings = false
     /// String shows answer
     @State private var answerText = "Ask and shake me!"
     /// Variable with default answers
     @ObservedObject var defaultAnswers = PossibleAnswers()
-    
+
     var body: some View {
         NavigationView {
-            
+
             VStack {
                 Text(answerText)
                     .onShake {
-                        updateAnsweredText(completion:{ answer in
+                        updateAnsweredText(completion: { answer in
                             answerText = answer
-                        },defaultAnswers: defaultAnswers)
+                        }, defaultAnswers: defaultAnswers)
                     }
                     .padding(.horizontal)
                 HStack {
@@ -69,7 +69,6 @@ extension UIWindow {
     }
 }
 
-
 /// A view modifier that detects shaking and calls a function of our choosing.
 struct DeviceShakeViewModifier: ViewModifier {
     let action: () -> Void
@@ -82,17 +81,12 @@ struct DeviceShakeViewModifier: ViewModifier {
     }
 }
 
-
-
 /// A View extension to make the modifier easier to use.
 extension View {
     func onShake(perform action: @escaping () -> Void) -> some View {
         self.modifier(DeviceShakeViewModifier(action: action))
     }
 }
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

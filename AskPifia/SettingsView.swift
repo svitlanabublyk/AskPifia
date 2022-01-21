@@ -8,14 +8,17 @@
 import SwiftUI
 
 
-
+/// View with settings
 struct SettingsView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    
+    /// Possible answer1
     @State  var possibleAnswer1: String
+    /// Possible answer2
     @State  var possibleAnswer2: String
+    ///Possible answer3
     @State  var possibleAnswer3: String
+    ///Variable with default answers
     @ObservedObject var defaultAnswers: PossibleAnswers
     
     
@@ -24,7 +27,6 @@ struct SettingsView: View {
             List {
                 VStack{
                     TextField("Add your answer", text:$possibleAnswer1)
-                    
                 }
                 VStack{
                     TextField("Add your answer", text:$possibleAnswer2)
@@ -32,7 +34,6 @@ struct SettingsView: View {
                 VStack{
                     TextField("Add your answer", text:$possibleAnswer3)
                 }
-                
             }
             .navigationTitle("Default answers")
             .navigationBarItems(trailing: Button("Save"){

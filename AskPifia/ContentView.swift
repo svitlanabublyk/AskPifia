@@ -7,10 +7,14 @@
 
 import SwiftUI
 
+/// Main view
 struct ContentView: View {
     
+   /// Button shows settings screen
     @State private var showSettings = false
+    /// String shows answer
     @State private var answerText = "Ask and shake me!"
+    /// Variable with default answers
     @ObservedObject var defaultAnswers = PossibleAnswers()
     
     var body: some View {
@@ -51,13 +55,12 @@ struct ContentView: View {
     }
 }
 
-// The notification we'll send when a shake gesture happens.
+/// The notification we'll send when  shake gesture happens.
 extension UIDevice {
     static let deviceDidShakeNotification = Notification.Name(rawValue: "deviceDidShakeNotification")
 }
 
-//  Override the default behavior of shake gestures to send our notification instead.
-
+///  Override the default behavior of shake gestures to send our notification instead.
 extension UIWindow {
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
@@ -67,7 +70,7 @@ extension UIWindow {
 }
 
 
-// A view modifier that detects shaking and calls a function of our choosing.
+/// A view modifier that detects shaking and calls a function of our choosing.
 struct DeviceShakeViewModifier: ViewModifier {
     let action: () -> Void
     func body(content: Content) -> some View {
@@ -81,7 +84,7 @@ struct DeviceShakeViewModifier: ViewModifier {
 
 
 
-// A View extension to make the modifier easier to use.
+/// A View extension to make the modifier easier to use.
 extension View {
     func onShake(perform action: @escaping () -> Void) -> some View {
         self.modifier(DeviceShakeViewModifier(action: action))

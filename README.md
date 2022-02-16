@@ -1,6 +1,6 @@
 #  AskPifia
 
-## Application to get answers on any question users ask by shaking device.
+## Application for getting answers 
 
  User shake the device to get answers,application gets random answers and shows it on screen.  
  Application have two screens: Main and Settings 

@@ -23,7 +23,17 @@ struct Request: Decodable {
 class Api {
 
     ///  URL to API with data
-    let apiUrl = "https://8ball.delegator.com/magic/JSON/question_string"
+    private var apiUrl: String
+
+    ///  Constructor
+    init(apiUrl: String) {
+        self.apiUrl = apiUrl
+    }
+
+    /// API setter
+    func setApiUrl(apiUrl: String) {
+        self.apiUrl = apiUrl
+    }
 
     /**
      Call API, get  and decode data.
@@ -32,7 +42,7 @@ class Api {
        - completion: clouser for setting answer.
        - defaultAnswers: array with with default answers,  use random order  if API is not avalible.
     */
-    func getAnswer(completion: @escaping (String) ->Void, defaultAnswers: [String]) {
+    func getAnswer(completion: @escaping (String) -> Void, defaultAnswers: [String]) {
         guard let url = URL(string: self.apiUrl)
         else {return}
         URLSession.shared.dataTask(with: url) { (rawData, _, _)  in

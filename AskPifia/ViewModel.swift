@@ -13,12 +13,13 @@ import Foundation
     - completion: clouser for  setting answer
     - defaultAnswers: possible answers that could be used as default answers
  */
-func updateAnsweredText(completion: @escaping (String) ->Void, defaultAnswers: PossibleAnswers) {
+func updateAnsweredText(completion: @escaping (String) -> Void, defaultAnswers: PossibleAnswers) {
     var answersToUse: [String] = []
+    let apiUrl = "https://8ball.delegator.com/magic/JSON/question_string"
     for answer in  defaultAnswers.items {
         answersToUse.append(answer.answerValue)
     }
-    Api().getAnswer(completion: completion, defaultAnswers: answersToUse)
+    Api(apiUrl: apiUrl).getAnswer(completion: completion, defaultAnswers: answersToUse)
 }
 
 ///  Answers that you can set by yourself
